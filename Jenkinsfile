@@ -2,8 +2,6 @@ node {
     def app
 
     stage('Clone repository') {
-      
-
         checkout scm
     }
 
@@ -16,7 +14,7 @@ node {
                         sh "git config user.name Bao19"
                         //sh "git switch master"
                         sh "cat deployment.yaml"
-                        sh "sed -i 's+nguyenbao19/q_and_a_with_documents.*+nguyenbao19/q_and_a_with_documents:${DOCKERTAG}+g' deployment.yaml"
+                        sh "sed -i 's+nguyenbao19/mlops-project.*+nguyenbao19/mlops-project:${DOCKERTAG}+g' deployment.yaml"
                         sh "cat deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
